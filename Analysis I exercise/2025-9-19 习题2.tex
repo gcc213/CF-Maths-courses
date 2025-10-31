@@ -1,0 +1,220 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ctexart}
+
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+
+\usepackage{ctex}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+
+
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{hidelinks,pdfcreator={cjx}}
+
+
+\usepackage{titling}
+% 核心修改：若未手动设置 title，则自动用文件名（）作为标题
+\title{习题2}
+\author{}
+\date{2025年9月19日}
+
+% 先加载 enumitem 宏包
+\usepackage{enumitem}
+
+% 重新用 enumitem 定义列表样式（此时无命令覆盖）
+\usepackage{etoolbox}
+\AtBeginEnvironment{enumerate}{
+  \setlist[enumerate,2]{
+    before={\def\labelenumii{(\arabic{enumii})}},  % 环境开始时执行一次
+    itemjoin={\def\labelenumii{(\arabic{enumii})}},  % 每个 \item 前再执行一次（确保覆盖）
+    label=(\arabic{enumii})  % 直接指定标签格式（双重保险）
+  }
+  \apptocmd{\tightlist}{\def\labelenumii{(\arabic{enumii})}}{}{}
+}
+
+
+\usepackage{fancyhdr}
+
+\begin{document}
+%%\maketitle
+%
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{2025年9月19日}
+\chead{习题2}
+
+\renewcommand{\headrulewidth}{1pt}
+\rfoot{\thepage}
+
+课上我们已经看到了如何通过Cauchy列的方式定义实数.我们下面从另一种角度来看这件事.这里我们假设我们已经有了整数,有理数,加减乘除,有理数的序关系.
+
+\subsection{第一步}\label{ux7b2cux4e00ux6b65}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定义}
+  我们称一个集合\(U\subseteq\mathbb{Q}\)为一个\textbf{分割},如果他满足以下条件:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    \(U\)不为空集且\(U \neq \mathbb{Q}\).
+  \item
+    若\(p \in U\)且\(q<p\),则有\(q \in U\).
+  \item
+    若\(p \in U\),则存在\(r \in U\)使得\(p<r\).
+  \end{enumerate}
+\end{itemize}
+
+进一步我们定义全体分割构成的集合为\(\mathbb{R}\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  证明:若\(p \in U,q \notin U\),则\(p<q\);若\(p \notin U,p<q\),则\(q \notin U\).
+\end{enumerate}
+
+\subsection{第二步}\label{ux7b2cux4e8cux6b65}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定义} 我们称两个分割\(U<V\),若\(U\)是\(V\)的子集.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  证明:\(\mathbb{R}\)是一个有序集.
+\item
+  证明:基于这样一个序关系,\(\mathbb{R}\)有最小上界性质.
+\end{enumerate}
+
+\subsection{第三步}\label{ux7b2cux4e09ux6b65}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定义}
+  对任意\(U,V \in \mathbb{R}\),我们令\(U+V=\{ p+q \mid p \in U,q \in V \},0=\{ x \in \mathbb{Q} \mid x<0 \}\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  验证上述定义满足加法公理.
+\item
+  证明:对任意\(U,V,W \in \mathbb{R}\),若\(U<V\),则\(U+W<V+W\).
+\end{enumerate}
+
+\subsection{第四步}\label{ux7b2cux56dbux6b65}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定义} \(\mathbb{R}_+=\{ U \in \mathbb{R} \mid U > 0 \}\).
+\item
+  \textbf{定义}
+  对\(U,V \in \mathbb{R}_+,UV=\{ p \mid \exists q \in U,r \in V,q>0,r>0,p \leq qr \}\).特别地,我们定义\(1=\{ q\in\mathbb{Q} \mid q<1 \}\).
+\item
+  \textbf{定义}
+  \(U0=0U=0\);若\(U<0,V<0,UV=(-U)(-V)\);若\(U<0,V>0,UV=-((-U)V)\);若\(U>0,V<0,UV=-(U(-V))\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  验证上述定义满足乘法和除法公理.
+\item
+  证明:若\(a\neq0\)为有理数,\(b\)为无理数,则\(a+b,ab\)都是无理数.
+\item
+  证明:\(\sqrt6\)为无理数.
+\item
+  证明:\(\mathbb{R}\)中有下界集合\(A\)满足\(\inf A=-\sup(-A)\).
+\item
+  令\(b>1,m,n,p,q \in \mathbb{Z},n,q>0,\frac{m}{n}=\frac{p}{q}\).证明:\((b^m)^\frac{1}{n}=(b^p)^\frac{1}{q}\).
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定义}
+  若\(x \in \mathbb{R}\),记\(B(x)=\{ b^t \mid t \in \mathbb{Q},t \leq x \}\).定义\(b^x=\sup B(x)\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  证明:\(b^{x+y}=b^xb^y,x,y \in \mathbb{R}\).
+\item
+  对于\(b>1,y>0\),证明:存在唯一实数\(x\)使得\(b^x=y\).证明可以拆分为以下步骤:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    对任意正整数\(n\),有\(b^n-1 \geq n(b-1)\).
+  \item
+    若\(t>1\)且\(n>\frac{b-1}{t-1}\),则\(b^\frac{1}{n}<t\).
+  \item
+    若\(w\)使得\(b^w<y\),则当\(n\)足够大时,有\(b^{w+\frac{1}{n}}<y\).
+  \item
+    若\(w\)使得\(b^w>y\),则当\(n\)足够大时,有\(b^{w-\frac{1}{n}}<y\).
+  \item
+    令\(A=\{ w \mid b^w<y \}\),证明:\(x=\sup A\)满足\(b^x=y\).
+  \item
+    证明:上述\(x\)唯一.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
