@@ -1,0 +1,172 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ctexart}
+
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+
+\usepackage{ctex}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+
+
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{hidelinks,pdfcreator={cjx}}
+
+
+\usepackage{titling}
+% 核心修改：若未手动设置 title，则自动用文件名（）作为标题
+\title{习题1}
+\author{}
+\date{2025年9月15日}
+
+% 先加载 enumitem 宏包
+\usepackage{enumitem}
+
+% 重新用 enumitem 定义列表样式（此时无命令覆盖）
+\usepackage{etoolbox}
+\AtBeginEnvironment{enumerate}{
+  \setlist[enumerate,2]{
+    before={\def\labelenumii{(\arabic{enumii})}},  % 环境开始时执行一次
+    itemjoin={\def\labelenumii{(\arabic{enumii})}},  % 每个 \item 前再执行一次（确保覆盖）
+    label=(\arabic{enumii})  % 直接指定标签格式（双重保险）
+  }
+  \apptocmd{\tightlist}{\def\labelenumii{(\arabic{enumii})}}{}{}
+}
+
+
+\usepackage{fancyhdr}
+
+\begin{document}
+%%\maketitle
+%
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{2025年9月15日}
+\chead{习题1}
+
+\renewcommand{\headrulewidth}{1pt}
+\rfoot{\thepage}
+
+第一节习题课放在第一节正课之前是具有启发性的:数学不是学出来的,数学是做出来的;遇到问题先做再说,边做边学，做就是学!
+
+\textbf{定义}
+称两个集合\(A\)与\(B\)\textbf{等势},若存在\(A,B\)之间的双射\(f\)此时记\(\vert A \rvert =  \vert B \rvert\).
+
+\textbf{定义}
+集合\(A\)称为\textbf{有限集},若\(A\)为空集或者存在\(n\)使得\(A\)与\(\{ 1,2,\cdots,n \}\)等势.此时记\(A\)的势\(\vert A \rvert = n\).
+
+\textbf{定义} 如果\(A\)不是有限集,则称\(A\)为\textbf{无限集}.
+
+\textbf{定义}
+若\(A\)有限或者与\(\mathbb{N}\)等势,则称\(A\)是\textbf{可数集};若\(A\)是无限集但不是可数集,则称\(A\)为\textbf{不可数集}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  求\(\vert \{ 2,44,1944,25,\alpha,\Delta \} \rvert\).
+\item
+  \(\mathbb{N}\)与\(\mathbb{Z}\)等势吗?怎么证明?
+\item
+  \(\mathbb{N}\)与偶数集等势吗?怎么证明?
+\item
+  考虑集合\(A=\{ \left( x_1,x_2 \right) \in \mathbb{R}^2 \mid x_1,x_2 \in \mathbb{Z} \}\),\(A\)与\(\mathbb{N}\)等势吗?
+\item
+  \(\mathbb{N}\)与\(\mathbb{Q}\)等势吗?
+\item
+  考虑\(\mathbb{R}^n\)中的整点集\(B=\{ \left( x_1,x_2,\cdots,x_n \right) \in \mathbb{R}^n \mid x_1,x_2,\cdots,x_n \in \mathbb{Z} \}\),\(B\)与\(\mathbb{N}\)等势吗?
+\item
+  考虑由整数列构成的集合\(A=\{ \left( x_n \right) \mid x_n \in \mathbb{Z} , n \in \mathbb{N} \}\),\(A\)与\(N\)等势吗?
+\item
+  \(\mathbb{N}\)与\(\mathbb{R}\)等势吗?
+\item
+  \(\mathbb{R}\)与\((0,1)\)等势吗?
+\item
+  对于两个不可数集\(A,B\),各具一个例子使得\(A \setminus B\)是:
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    有限集.
+  \item
+    无限可数集.
+  \item
+    不可数集.
+  \end{enumerate}
+\end{enumerate}
+
+\textbf{定义}
+若存在从\(A\)到\(B\)的单射,则记\(\vert A \rvert \leq \vert B \rvert\),进一步地,若不存在\(B\)到\(A\)的单射,则记\(\vert A \rvert > \vert B \rvert\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  证明:若\(A \subseteq B\),则\(\vert A \rvert \leq \vert B \rvert\).
+\item
+  证明:可数集的子集也是可数集.
+\item
+  证明:若\(\vert A \rvert \leq \vert B \rvert\)且\(\vert B \rvert \leq \vert A \rvert\),则\(\vert A \rvert = \vert B \rvert\).
+\item
+  证明:\((0,1)\)与\([0,1]\)等势.
+\end{enumerate}
+
+\textbf{定义} 集合\(A\)的\textbf{幂集}为\(A\)的子集的全体,记为\(2^A\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{14}
+\tightlist
+\item
+  令\(A={x,y,z}\),写出\(2^A\).计算它们的势,从而理解记号\(2^A\)的意义.
+\item
+  设\(\vert A \rvert = n\),那么\(\vert 2^A \rvert\)呢?
+\item
+  若\(A\)为无限可数集,那么\(\vert 2^A \rvert\)呢?
+\item
+  若\(A\)为不可数集,可以对\(2^A\)的势说什么?
+\item
+  证明:\(\vert A \rvert < \vert 2^A \rvert\).
+\end{enumerate}
+
+\end{document}
